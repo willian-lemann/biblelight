@@ -2,10 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import Routes from './src/routes';
+import { NavigationContainer } from '@react-navigation/native';
 
 function App() {
   return (
-    <Routes />
+    <NavigationContainer>
+      <Routes />
+    </NavigationContainer>
   );
 };
 

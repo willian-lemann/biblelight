@@ -1,26 +1,16 @@
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Main from './pages/Main';
 
-const Routes = createAppContainer(
-    createStackNavigator({
+const Drawer = createDrawerNavigator();
 
-        Main: {
-            screen: Main,
-            navigationOptions: {
-                title: 'BibleLight',
-                headerTintColor: '#fff',
-                headerTitleStyle: {
-                    fontSize: 23,
-                    fontWeight: 'bold'
-                },
-                headerStyle: {
-                    backgroundColor: '#7d40e7',
-                },
-            },
-        }
-    })
-);
+function Routes() {
+    return (
+        <Drawer.Navigator initialRouteName="BibleLight">
+            <Drawer.Screen name="BibleLight" component={Main} />
+        </Drawer.Navigator>
+    );
+}
 
 export default Routes;
