@@ -11,13 +11,13 @@ function ViewText({ item }) {
 
     useEffect(() => {
         setRandomNum(random);
-    }, []);
+    }, [item]);
 
 
     const { name } = item.book;
     const chapterNumber = item.chapter.number;
     const { number, text } = item.verses[randomNum];
-
+    console.log(number)
 
     function setContent() {
         Clipboard.setString(`${text} ${name}:${chapterNumber}.${number}`);

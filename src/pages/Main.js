@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity, StyleSheet } from 'react-native';
 
-import ViewText from '../components/ViewText';
-import api from '../service/api';
+import ViewText from '../components/Main/ViewText';
+import bibleApi from '../services/BibleService';
 
 function Main() {
     let random = Math.floor(Math.random() * 31) + 1;
@@ -12,13 +12,14 @@ function Main() {
 
     useEffect(() => {
         setChapter(random);
+        getBibleInfo();
     }, []);
 
     async function getBibleInfo() {
-        const response = await api.get(`/verses/nvi/pv/${chapter}`);
+        const response = await bibleApi.get(`/verses/nvi/pv/${chapter}`);
 
         setProverbios(response.data);
-        console.log(proverbios)
+        setChapter(random);
     }
 
     return (

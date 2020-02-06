@@ -1,15 +1,34 @@
 import React from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Main from './pages/Main';
+import Galery from './pages/Galery';
 
-const Drawer = createDrawerNavigator();
+import Header from './components/Main/Header';
+
+const Stack = createStackNavigator();
 
 function Routes() {
     return (
-        <Drawer.Navigator initialRouteName="BibleLight">
-            <Drawer.Screen name="BibleLight" component={Main} />
-        </Drawer.Navigator>
+        <Stack.Navigator
+            initialRouteName="BibleLight"
+            headerMode="screen"
+            screenOptions={{
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                    fontWeight: 'bold'
+                },
+                headerStyle: {
+                    backgroundColor: '#f05a5b',
+                }
+            }}
+        >
+            <Stack.Screen name="BibleLight" component={Main} options={{
+                title: 'BibleLight',
+                headerRight: () => <Header />,
+            }} />
+            <Stack.Screen name="Galery" component={Galery} />
+        </Stack.Navigator>
     );
 }
 
